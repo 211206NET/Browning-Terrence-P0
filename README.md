@@ -1,2 +1,3 @@
 # Browning-Terrence-P0
-StoreFront
+
+This is my very first individual StoreFront project named "Sharp-E Mens"
