@@ -2,7 +2,7 @@
 
     public class Store {    //I want to store the name, city and state of store
 
-    //This is property, a type member
+    //This is a property and a type member
     //Access modifier controls the visibility of type and type members.
     //There are four access modifiers: Public, Private, Internal, Protected
     //public is the most visible, private is the least visible
