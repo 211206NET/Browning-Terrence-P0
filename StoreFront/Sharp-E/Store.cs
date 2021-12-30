@@ -1,5 +1,4 @@
     namespace StoreFront;
-
     public class Store {    //I want to store the name, city and state of store
 
     //This is a property and a type member
@@ -9,9 +8,8 @@
     //By default, class member has private access modifier
     //Class, by default, are internal unless you explicitely say otherwise
     public string Name { get; set; }
-    
+    public int Address { get; set; }
     public string City { get; set; }
-
     public string State { get; set; }
 
 }
