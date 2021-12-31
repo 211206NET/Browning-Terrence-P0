@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using Models;
+using StoreFront;
 
 List<Store> allStores = new List<Store>();   //Initializes a new instance of the List<T> class (Store)
 // ^ This is a list of Stores
