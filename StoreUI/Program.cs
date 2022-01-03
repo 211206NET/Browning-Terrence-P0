@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using StoreFront;
+using Models;   // This is the UI (User Interface) Console application that will be taking all the user input and outputing data to the console.
 
 List<Store> allStores = new List<Store>();   //Initializes a new instance of the List<T> class (Store)
 // ^ This is a list of Stores

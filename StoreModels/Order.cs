@@ -2,14 +2,12 @@ namespace Models;
 
 public class Order
 {
-    public int OrderId { get; set; }
-    public int CustomerId { get; set; }
-    public int StoreId { get; set; }
-    public int OrderNumber { get; set; }
-    public List<LineItem> LineItems { get; set; }
     //You can also use DateTime data type for this
     public DateOnly OrderDate { get; set; }
-    public DateOnly ShippingDate { get; set; }
+    public int CustomerId { get; set; }
+    public int OrderNumber { get; set; }
+    public int StoreId { get; set; }
+    public List<LineItem> LineItems { get; set; }
     public decimal Total { get; set; }
     public decimal CalculateTotal() {
         //a method that would go through each lineitem in LineItems property

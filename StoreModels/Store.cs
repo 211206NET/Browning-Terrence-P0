@@ -9,7 +9,7 @@
     //Class, by default, are internal unless you explicitely say otherwise
     public string Name { get; set; }  //This is a property, a type member with a (public) access modifier, (string) datatype and {get; set;} method.
     public int Address { get; set; }  //This is a property, a type member with a a (public) access modifier, (int) datatype and {get; set;} method. 
-    public string City { get; set; }
-    public string State { get; set; }
+    public List<Inventory> Inventories { get; set; }
+    public List<Order> Orders { get; set; }
 
 }
