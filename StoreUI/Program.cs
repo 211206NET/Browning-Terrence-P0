@@ -14,7 +14,8 @@ while(!exit)  // A (Not Exit = not True) while loop
     Console.WriteLine("\n***Please choose an option***");
     Console.WriteLine("1. Need an account? Sign up");          //Creating an account
     Console.WriteLine("2. Already have an account? Log in");
-    Console.WriteLine("3. Start browsing Sharp-E selections");
+    Console.WriteLine("3. Browse Sharp-E selections");
+    Console.WriteLine("4. Customer ordered products");
     Console.WriteLine("x. Log out");
     string input = Console.ReadLine();
 
@@ -40,6 +41,11 @@ while(!exit)  // A (Not Exit = not True) while loop
             allCustomers.Add(newCustomer);  
         break;
         case "2":
+            Console.WriteLine("Here are all your restaurants!");
+            foreach(Customer custo in allCustomers)
+            {
+            Console.WriteLine($"Name: {custo.Name} \nEmail: {custo.Email}");
+            }
             Console.WriteLine("\n==Sign in below==");
             Console.WriteLine("UserName: "); 
             string username = Console.ReadLine();
@@ -74,10 +80,15 @@ while(!exit)  // A (Not Exit = not True) while loop
             };
             allStores.Add(newStore);    
             break;   
+        case "4":
+            Product p = new Product();
+            Product p2 = new Product("ProductName", "Description", 125);
+            Console.WriteLine("***Products in cart*** " + p.ProductName + " " + p.Description + " " +   p.Price);
+            break;
         case "x":
             exit = true;  // As long as the loop doesn't end with the user saying No, then it keep repeating.
             Console.WriteLine("***GoodBye!!! Thanks for shopping with us***");
         break;
-
+                
     }
  } 
