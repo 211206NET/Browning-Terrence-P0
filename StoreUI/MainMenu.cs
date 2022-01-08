@@ -1,5 +1,6 @@
 namespace StoreUI;
 using Models;
+using StoreDL;
 public class MainMenu {
 
     private List<Customer> allCustomers = new List<Customer>();   //Initializes a new instance of the List<T> class 
@@ -50,11 +51,11 @@ while(!exit)  // A (Not Exit = not True) while loop
             PassWord = passWord,
 
             };
-            this.allCustomers.Add(newCustomer);  
+            StaticStorage.AddCustomer(newCustomer);  
         break;
         case "2":
             Console.WriteLine("\n***Customer Log in info***");
-            foreach(Customer custo in this.allCustomers)
+            foreach(Customer custo in StaticStorage.GetAllCustomers())
             {
             Console.WriteLine($"Name: {custo.Name} \nEmail: {custo.Email} \nUserName: {custo.UserName} \nPassWord: {custo.PassWord}\n");
             }
