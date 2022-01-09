@@ -8,6 +8,7 @@ public class MainMenu {
 
 
     public void Start() {
+        StaticStorage ss = new StaticStorage();
         bool exit = false;  // This is a false boolean value that will exit when false. 
         Console.WriteLine("==================================");
         Console.WriteLine("| WELCOME TO SHARP-E STOREFRONT! |");
@@ -36,8 +37,6 @@ while(!exit)  // A (Not Exit = not True) while loop
             string userName = Console.ReadLine();
             Console.WriteLine("\nPassWord: ");
             string passWord = Console.ReadLine();
-            Console.WriteLine("\nVerifyPassword: ");
-            string verifyPassword = Console.ReadLine();  
             Console.WriteLine("\nThanks for signing up!!");
 
             // Store newStore = new Store();  // New Store object
@@ -51,11 +50,11 @@ while(!exit)  // A (Not Exit = not True) while loop
             PassWord = passWord,
 
             };
-            StaticStorage.AddCustomer(newCustomer);  
+            ss.AddCustomer(newCustomer);  
         break;
         case "2":
             Console.WriteLine("\n***Customer Log in info***");
-            foreach(Customer custo in StaticStorage.GetAllCustomers())
+            foreach(Customer custo in ss.GetAllCustomers())
             {
             Console.WriteLine($"Name: {custo.Name} \nEmail: {custo.Email} \nUserName: {custo.UserName} \nPassWord: {custo.PassWord}\n");
             }
@@ -90,6 +89,8 @@ while(!exit)  // A (Not Exit = not True) while loop
             Console.WriteLine("***Goodbye!!! Thanks for shopping with us***");
         break;               
             }
+
+            
         }
     } 
 }
