@@ -1,5 +1,6 @@
 namespace StoreUI;
 using Models;
+using StoreBL;
 using StoreDL;
 public class MainMenu {
 
@@ -17,10 +18,10 @@ public class MainMenu {
 while(!exit)  // A (Not Exit = not True) while loop
 {    
    
-    Console.WriteLine("\n***Please choose an option***");
+    Console.WriteLine("\n***Choose an options below***");
     Console.WriteLine("1. Need an account? Sign up");          //Creating an account
-    Console.WriteLine("2. View customer log");
-    Console.WriteLine("3. Browse Sharp-E selections");
+    Console.WriteLine("2. View Customer Log");
+    Console.WriteLine("3. Browse Store selections");
     Console.WriteLine("4. Customer ordered products");
     Console.WriteLine("x. Log out");
     string input = Console.ReadLine();
@@ -28,56 +29,42 @@ while(!exit)  // A (Not Exit = not True) while loop
     switch (input)
     {
         case "1":
-            Console.WriteLine("\n==Sign up below==");
-            Console.WriteLine("Name: ");
-            string name = Console.ReadLine();  
+            Console.WriteLine("\n==Sign up below==");  
+            Console.WriteLine("Username: ");
+            string username = Console.ReadLine();
+            Console.WriteLine("\nPassword: ");
+            string password = Console.ReadLine();
             Console.WriteLine("\nEmail: ");
-            string email = Console.ReadLine();   
-            Console.WriteLine("\nUserName: ");
-            string userName = Console.ReadLine();
-            Console.WriteLine("\nPassWord: ");
-            string passWord = Console.ReadLine();
+            string email = Console.ReadLine(); 
             Console.WriteLine("\nThanks for signing up!!");
 
-            // Store newStore = new Store();  // New Store object
+            // Store newStore = new Store();  = New Store object
             // newStore.Name = name;
-            // newStore.City = address;          // (newStore.Name, newStore.Address is calling the setter {set;} method.
-
+            // newStore.City = city;    (newStore.Name newStore.City is calling the setter {set;} method.
+            Random rnd = new Random();
+            int Id = rnd.Next(1000000);
             Customer newCustomer = new Customer {  // Another way to initialize a class like the above ^ example and it's called (Object Initializer).
-            Name = name,
+
+            Id = Id,
+            Username = username,
+            Password = password,
             Email = email,
-            UserName = userName,
-            PassWord = passWord,
 
             };
-            ss.AddCustomer(newCustomer);  
+            ss.AddCustomer(newCustomer); 
+             
         break;
         case "2":
             Console.WriteLine("\n***Customer Log in info***");
             foreach(Customer custo in ss.GetAllCustomers())
             {
-            Console.WriteLine($"Name: {custo.Name} \nEmail: {custo.Email} \nUserName: {custo.UserName} \nPassWord: {custo.PassWord}\n");
+            Console.WriteLine($"UserName: {custo.Username} \nPassWord: {custo.Password} \nEmail: {custo.Email}\n");
             }
             
         break;
         case "3":
-             
-            Console.WriteLine("===================");
-            Console.WriteLine("|| Sharp-E Shoes ||");
-            Console.WriteLine("===================");
-            Console.WriteLine("===================");
-            Console.WriteLine("|| Sharp-E Pants ||");
-            Console.WriteLine("===================");
-            Console.WriteLine("===================");
-            Console.WriteLine("|| Sharp-E Shirts ||");
-            Console.WriteLine("===================");
-   
-            foreach(Store sto in this.allStores);    //foreach loop
-
-            Store newStore = new Store {  // Another way to initialize a class like the above ^ example and it's called (Object Initializer).
-        
-            };
-            this.allStores.Add(newStore);    
+             new StoreMenu().Start();
+           
             break;   
         case "4":
             Product p = new Product();
