@@ -1,29 +1,26 @@
 namespace StoreUI;
 using Models;
-using StoreBL;
 using StoreDL;
+
 public class MainMenu {
-
-    private List<Customer> allCustomers = new List<Customer>();   //Initializes a new instance of the List<T> class 
-    private List<Store> allStores = new List<Store>();
-
-
+    private List<Customer> allCustomers = new List<Customer>();    
+    
     public void Start() {
         StaticStorage ss = new StaticStorage();
-        bool exit = false;  // This is a false boolean value that will exit when false. 
+        bool exit = false;  
         Console.WriteLine("==================================");
         Console.WriteLine("| WELCOME TO SHARP-E STOREFRONT! |");
         Console.WriteLine("==================================");
     
-while(!exit)  // A (Not Exit = not True) while loop
+while(!exit) 
 {    
    
-    Console.WriteLine("\n***Choose an options below***");
-    Console.WriteLine("1. Need an account? Sign up");          //Creating an account
-    Console.WriteLine("2. View Customer Log");
-    Console.WriteLine("3. Browse Store selections");
-    Console.WriteLine("4. Customer ordered products");
-    Console.WriteLine("x. Log out");
+    Console.WriteLine("\n     *** MainMenu ***");
+    Console.WriteLine("Please choose an option below\n");
+    Console.WriteLine("[1]. Need an account? Sign up");          
+    Console.WriteLine("[2]. Account holder? Log in");
+    Console.WriteLine("[3]. Manager Access Only");
+    Console.WriteLine("[4]. Log out");
     string input = Console.ReadLine();
 
     switch (input)
@@ -52,28 +49,58 @@ while(!exit)  // A (Not Exit = not True) while loop
 
             };
             ss.AddCustomer(newCustomer); 
-             
         break;
         case "2":
-            Console.WriteLine("\n***Customer Log in info***");
-            foreach(Customer custo in ss.GetAllCustomers())
+            Console.WriteLine("Sign in below");                        
+            Console.WriteLine("enter username");
+            string verifyusername = Console.ReadLine();
+            List<Customer> customers = ss.GetAllCustomers();
+            bool exists = false;
+            string loginpassword = "";
+            int CustomerId = 0;
+            foreach(Customer customer in customers) 
+            {       
+                if(verifyusername==customer.Username) 
+                {
+                    Console.WriteLine("Username found");
+                    loginpassword=customer.Password;
+                    CustomerId = customer.Id;
+                    exists=true;
+                }
+                
+            }
+            if(exists) 
             {
-            Console.WriteLine($"UserName: {custo.Username} \nPassWord: {custo.Password} \nEmail: {custo.Email}\n");
+                System.Console.WriteLine("enter password");
+                string checkpassword = Console.ReadLine();
+                
+                if(loginpassword == checkpassword){
+
+                Console.WriteLine("signed in ");
+                new StoreMenu().StartStoreMenu(CustomerId);
+                }
+                else{
+                    Console.WriteLine("Try again");
+                }
+
+            }
+            else{
+                Console.WriteLine("username not found");
             }
             
         break;
         case "3":
-             new StoreMenu().Start();
-           
+            Console.WriteLine("\n*** Manager List ***");         
+            new StoreManager().StartManager();
             break;   
+        // case "4":
+        //     Product p = new Product();
+        //     Product p2 = new Product("ProductName", "Description", 125);
+        //     Console.WriteLine("***Products in cart*** " + p.ProductName + " " + p.Description + " " +   p.Price);
+        //     break;
         case "4":
-            Product p = new Product();
-            Product p2 = new Product("ProductName", "Description", 125);
-            Console.WriteLine("***Products in cart*** " + p.ProductName + " " + p.Description + " " +   p.Price);
-            break;
-        case "x":
             exit = true;  // As long as the loop doesn't end with the user saying No, then it keep repeating.
-            Console.WriteLine("***Goodbye!!! Thanks for shopping with us***");
+            Console.WriteLine("***Goodbye!! Come back again***");
         break;               
             }
 
