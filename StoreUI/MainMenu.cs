@@ -14,13 +14,13 @@ public class MainMenu {
     
 while(!exit) 
 {    
-   
+
     Console.WriteLine("\n     *** MainMenu ***");
     Console.WriteLine("Please choose an option below\n");
-    Console.WriteLine("[1]. Need an account? Sign up");          
-    Console.WriteLine("[2]. Account holder? Log in");
-    Console.WriteLine("[3]. Manager Access Only");
-    Console.WriteLine("[4]. Log out");
+    Console.WriteLine("[1]. Need an account? → Sign up");          
+    Console.WriteLine("[2]. Account holder? → Log in ");
+    Console.WriteLine("[3]. *Administrator Access Only*");
+    Console.WriteLine("[x]. Log out");
     string input = Console.ReadLine();
 
     switch (input)
@@ -39,7 +39,7 @@ while(!exit)
             // newStore.Name = name;
             // newStore.City = city;    (newStore.Name newStore.City is calling the setter {set;} method.
             Random rnd = new Random();
-            int Id = rnd.Next(1000000);
+            int Id = rnd.Next(50);
             Customer newCustomer = new Customer {  // Another way to initialize a class like the above ^ example and it's called (Object Initializer).
 
             Id = Id,
@@ -52,45 +52,40 @@ while(!exit)
         break;
         case "2":
             Console.WriteLine("Sign in below");                        
-            Console.WriteLine("enter username");
-            string verifyusername = Console.ReadLine();
-            List<Customer> customers = ss.GetAllCustomers();
-            bool exists = false;
-            string loginpassword = "";
-            int CustomerId = 0;
-            foreach(Customer customer in customers) 
-            {       
-                if(verifyusername==customer.Username) 
-                {
-                    Console.WriteLine("Username found");
-                    loginpassword=customer.Password;
-                    CustomerId = customer.Id;
-                    exists=true;
-                }
-                
-            }
-            if(exists) 
+            Console.WriteLine("Username:");
+            string Username = Console.ReadLine();
+            System.Console.WriteLine("Password:");
+            string Password = Console.ReadLine();
             {
-                System.Console.WriteLine("enter password");
-                string checkpassword = Console.ReadLine();
+            // bool val = true;
+            // List<Customer> customers = ss.GetAllCustomers();
+            // int CustomerId = 0;
+            // foreach(Customer customer in customers) 
+            // {       
+            //     if(val) 
+            //     {
+            //     if(verifyusername==customer.Username)
+            //     { 
+                    
+            //         Console.WriteLine("Username found");
+            //         CustomerId = customer.Id; 
+            //     }
+            //     else 
+            //     {
+            //         Console.WriteLine("Incorrect info");
+            //     }
                 
-                if(loginpassword == checkpassword){
+            //     Console.WriteLine("signed in ");
+                
+            //     }
+             Console.WriteLine("\n** You have successfully signed in **\n");  
 
-                Console.WriteLine("signed in ");
-                new StoreMenu().StartStoreMenu(CustomerId);
-                }
-                else{
-                    Console.WriteLine("Try again");
-                }
 
-            }
-            else{
-                Console.WriteLine("username not found");
-            }
-            
+            };  
+            new StoreMenu().StartStoreMenu();
         break;
         case "3":
-            Console.WriteLine("\n*** Manager List ***");         
+            Console.WriteLine("\n*** Manager Options ***");         
             new StoreManager().StartManager();
             break;   
         // case "4":
@@ -98,13 +93,14 @@ while(!exit)
         //     Product p2 = new Product("ProductName", "Description", 125);
         //     Console.WriteLine("***Products in cart*** " + p.ProductName + " " + p.Description + " " +   p.Price);
         //     break;
-        case "4":
+        case "x":
             exit = true;  // As long as the loop doesn't end with the user saying No, then it keep repeating.
             Console.WriteLine("***Goodbye!! Come back again***");
+            
         break;               
             }
 
-            
+    
         }
     } 
 }
