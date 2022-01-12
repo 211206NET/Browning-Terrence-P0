@@ -22,48 +22,18 @@ while(!exit)
     Console.WriteLine("[1] Browse Items/Checkout");
     Console.WriteLine("[2] Make a Purchase");
     Console.WriteLine("[3] Order History");
+    Console.WriteLine("[x] Back to MainMenu");
 
     string input = Console.ReadLine();
     switch(input)
     {
         case "1":
-            //Console.WriteLine("** You selected: Browse Items/Checkout **");
-                
-            // List<Customer> allCustomers = _SFBL.GetAllCustomers();
-            // Customer currentuser =  _SFBL.GetCurrentUser(Id);
-            // List<Order>  currOrder = currentuser.lineitem;
-            // int storeID =0;
-            // if(activeuser.Cart == null || currentCart.Count == 0){ 
-            //     Console.WriteLine(" You have no items ");
-            //     activeuser.Cart = new List<CustomerOrder>();
-            // }
-            // else{
-            //     storeID = currentCart[0].storeID;
-            // }
-            // decimal CustomerTotal =0;
-            
-            // //foreach(CustomerOrder currCart in currentCart ){
-            // for(int i = 0; i < currentCart.Count; i++){
-            // Console.WriteLine($"[{i}] Name: {currentCart[i].ProductName}  \nQuantity: {currentCart[i].Quantity} \nPrice: {currentCart[i].TotalPrice} $ " ); 
-            
-            // CustomerTotal += currentCart[i].TotalPrice;
-            
-            // }
-
-            // Console.WriteLine(CustomerTotal);
-            // Console.WriteLine("Checkout? Y/N");
-            // string checkoutinput = Console.ReadLine();
-            // if(checkoutinput == "y"){
-            // Console.WriteLine("You chose checkout");
-            
-            // Checkout(CustomerId,storeID,CustomerTotal, currentCart);
-            //}
-            //else{
-                //break;
-            //}
-
-
-            
+            Console.WriteLine("** You selected: Browse Items/Checkout **");
+            List<Product> StoreInventory =_SFBL.GetAllProduct();
+            for(int i = 0; i < StoreInventory.Count; i++){
+            Console.WriteLine($"[{i}] Name: {StoreInventory[i].ProductName} \nDescription: {StoreInventory[i].Description} \nPrice: {StoreInventory[i].Price}\n" ); 
+            }
+        
            
         break;
         case "2":
@@ -74,8 +44,8 @@ while(!exit)
             }
             
         break;
-        default:
-            Console.WriteLine("Not found");
+        case "x":
+            exit = true;
         break;
         }    
     }

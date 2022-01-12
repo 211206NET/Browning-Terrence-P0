@@ -12,12 +12,13 @@ public class StoreManager {
     {
 
     bool exit = false;
+    Random rnd = new Random();
 
     while(!exit)
     {
     Console.WriteLine("[1] Add a New Store");
     Console.WriteLine("[2] View List of Stores");
-    Console.WriteLine("[3] Stock low? Replenish Inventory");
+    Console.WriteLine("[3] Add a New Product");
     Console.WriteLine("[x] Back to MainMenu");
     String ManagerInput = Console.ReadLine();
 
@@ -33,8 +34,8 @@ public class StoreManager {
             // Store newStore = new Store();  = New Store object
             // newStore.Name = name;
             // newStore.City = city;    (newStore.Name newStore.City is calling the setter {set;} method.
-            Random rnd = new Random();
-            int Id = rnd.Next(50);
+            
+            int Id = rnd.Next(1000000);
             Store newStore = new Store {  // Another way to initialize a class like the above ^ example and it's called (Object Initializer).
 
             Id = Id,
@@ -42,29 +43,52 @@ public class StoreManager {
             Address = Address
 
             };
-                _SFBL.AddStore(newStore);
-                Console.WriteLine("\n*** Your Store has been added ***\n");            
-                allStores.Add(newStore);
-            break;
+            _SFBL.AddStore(newStore);
+            Console.WriteLine("\n** Your Store has been added **\n");            
+            allStores.Add(newStore);
+        break;
 
-            case "2":
-                Console.WriteLine("\n***Admins Store List***");
-                foreach(Store sto in allStores)          
+        case "2":
+            Console.WriteLine("\n***Admins Store List***");
+            foreach(Store sto in allStores)          
             {
                 Console.WriteLine($"Name: {sto.Name} \nAddress: {sto.Address}\n");
             }
 
-            break;
-            case "3":
-                Console.WriteLine("There are [0] Items to be replenished!\n");
-            break;
+        break;
+        case "3":
+            Console.WriteLine("\n==Add Products==");  
+            Console.WriteLine("ProductName: ");
+            string ProductName = Console.ReadLine();
+            Console.WriteLine("\nDescription: ");
+            string Description = Console.ReadLine();
+            Console.WriteLine("\nPrice: ");
+            string Price = Console.ReadLine(); 
+           
 
-            case "x":
-                exit = true;
-            break;
+            
+        
+            int ProductId = rnd.Next(100000);
+            Product newProduct = new Product {  
+
+            Id = ProductId,
+            ProductName = ProductName,
+            Description = Description,
+            Price = Decimal.Parse(Price),
+            
+
+            };
+            _SFBL.AddProduct(newProduct); 
+            Console.WriteLine("** Your Product has been added **\n");
+
+        break;
+
+        case "x":
+            exit = true;
+        break;
 
         }
     }
 
-    }
+  }
 }

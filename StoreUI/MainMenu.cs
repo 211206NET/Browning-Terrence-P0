@@ -35,12 +35,10 @@ while(!exit)
             string email = Console.ReadLine(); 
             Console.WriteLine("\nThanks for signing up!!");
 
-            // Store newStore = new Store();  = New Store object
-            // newStore.Name = name;
-            // newStore.City = city;    (newStore.Name newStore.City is calling the setter {set;} method.
+            
             Random rnd = new Random();
-            int Id = rnd.Next(50);
-            Customer newCustomer = new Customer {  // Another way to initialize a class like the above ^ example and it's called (Object Initializer).
+            int Id = rnd.Next(100000);
+            Customer newCustomer = new Customer {  
 
             Id = Id,
             Username = username,
@@ -57,29 +55,7 @@ while(!exit)
             System.Console.WriteLine("Password:");
             string Password = Console.ReadLine();
             {
-            // bool val = true;
-            // List<Customer> customers = ss.GetAllCustomers();
-            // int CustomerId = 0;
-            // foreach(Customer customer in customers) 
-            // {       
-            //     if(val) 
-            //     {
-            //     if(verifyusername==customer.Username)
-            //     { 
-                    
-            //         Console.WriteLine("Username found");
-            //         CustomerId = customer.Id; 
-            //     }
-            //     else 
-            //     {
-            //         Console.WriteLine("Incorrect info");
-            //     }
-                
-            //     Console.WriteLine("signed in ");
-                
-            //     }
              Console.WriteLine("\n** You have successfully signed in **\n");  
-
 
             };  
             new StoreMenu().StartStoreMenu();
