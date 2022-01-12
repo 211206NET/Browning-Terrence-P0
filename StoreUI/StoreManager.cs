@@ -16,6 +16,7 @@ public class StoreManager {
 
     while(!exit)
     {
+    Console.WriteLine("*** Manager Options ***");    
     Console.WriteLine("[1] Add a New Store");
     Console.WriteLine("[2] View List of Stores");
     Console.WriteLine("[3] Add a New Product");
@@ -79,8 +80,7 @@ public class StoreManager {
 
             };
             _SFBL.AddProduct(newProduct); 
-            Console.WriteLine("** Your Product has been added **\n");
-
+            Console.WriteLine("\n** Your Product has been added **\n");
         break;
 
         case "x":

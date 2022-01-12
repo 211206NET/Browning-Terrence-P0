@@ -60,8 +60,7 @@ while(!exit)
             };  
             new StoreMenu().StartStoreMenu();
         break;
-        case "3":
-            Console.WriteLine("\n*** Manager Options ***");         
+        case "3":        
             new StoreManager().StartManager();
             break;   
         // case "4":
